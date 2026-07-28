@@ -6,13 +6,21 @@
 
 在 OpenWrt 上添加定时任务：
 
-
+```bash
+# 每天 14:30 拉取最新规则
+echo "30 14 * * * wget -q -O /etc/dnsmasq.d/adblock.conf https://raw.githubusercontent.com/lecheng2018/adblock-rules/main/rules/adblock.conf && /etc/init.d/dnsmasq reload" >> /etc/crontabs/root
+```
 
 ## 规则来源
 
 - [AdGuard DNS filter](https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt)
 - [anti-AD](https://anti-ad.net/easylist.txt)
 - [StevenBlack hosts](https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts)
+- [秋风广告规则 (AWAvenue)](https://github.com/TG-Twilight/AWAvenue-Ads-Rule)
+
+## 去重
+
+所有规则源合并后经过全局去重，避免重复域名。
 
 ## 更新
 
